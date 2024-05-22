@@ -11,6 +11,16 @@
 		C738A0B22BFCCC61001603DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0B12BFCCC61001603DD /* ContentView.swift */; };
 		C738A0B42BFCCC63001603DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C738A0B32BFCCC63001603DD /* Assets.xcassets */; };
 		C738A0B72BFCCC63001603DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C738A0B62BFCCC63001603DD /* Preview Assets.xcassets */; };
+		C738A0BE2BFCCC78001603DD /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0BD2BFCCC78001603DD /* ARViewContainer.swift */; };
+		C738A0C02BFCCCF7001603DD /* ARViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0BF2BFCCCF7001603DD /* ARViewExtension.swift */; };
+		C738A0C22BFCCF01001603DD /* BodySkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0C12BFCCF01001603DD /* BodySkeleton.swift */; };
+		C738A0E12BFCE7F3001603DD /* TShirt.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C738A0E02BFCE7F3001603DD /* TShirt.usdz */; };
+		C738A0ED2BFD9DA7001603DD /* WhitePants.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C738A0EC2BFD9DA7001603DD /* WhitePants.usdz */; };
+		C738A0EF2BFDA247001603DD /* LongPolo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C738A0EE2BFDA247001603DD /* LongPolo.usdz */; };
+		C738A0F12BFDA954001603DD /* BlueCollarPolo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C738A0F02BFDA954001603DD /* BlueCollarPolo.usdz */; };
+		C738A0F32BFDF41A001603DD /* LongBlueShirt.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C738A0F22BFDF41A001603DD /* LongBlueShirt.usdz */; };
+		C738A0F92BFE66F9001603DD /* BoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0F82BFE66F9001603DD /* BoardingView.swift */; };
+		C738A0FB2BFE6714001603DD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0FA2BFE6714001603DD /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +29,17 @@
 		C738A0B12BFCCC61001603DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C738A0B32BFCCC63001603DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C738A0B62BFCCC63001603DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C738A0BD2BFCCC78001603DD /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
+		C738A0BF2BFCCCF7001603DD /* ARViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewExtension.swift; sourceTree = "<group>"; };
+		C738A0C12BFCCF01001603DD /* BodySkeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodySkeleton.swift; sourceTree = "<group>"; };
+		C738A0C32BFCD4A4001603DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C738A0E02BFCE7F3001603DD /* TShirt.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = TShirt.usdz; sourceTree = "<group>"; };
+		C738A0EC2BFD9DA7001603DD /* WhitePants.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = WhitePants.usdz; sourceTree = "<group>"; };
+		C738A0EE2BFDA247001603DD /* LongPolo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = LongPolo.usdz; sourceTree = "<group>"; };
+		C738A0F02BFDA954001603DD /* BlueCollarPolo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = BlueCollarPolo.usdz; sourceTree = "<group>"; };
+		C738A0F22BFDF41A001603DD /* LongBlueShirt.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = LongBlueShirt.usdz; sourceTree = "<group>"; };
+		C738A0F82BFE66F9001603DD /* BoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingView.swift; sourceTree = "<group>"; };
+		C738A0FA2BFE6714001603DD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +72,10 @@
 		C738A0AE2BFCCC61001603DD /* StyleOn */ = {
 			isa = PBXGroup;
 			children = (
+				C738A0DE2BFCE7DD001603DD /* Resources */,
+				C738A0F42BFE66DB001603DD /* Models */,
+				C738A0F52BFE66DF001603DD /* Views */,
+				C738A0C32BFCD4A4001603DD /* Info.plist */,
 				C738A0AF2BFCCC61001603DD /* StyleOnApp.swift */,
 				C738A0B12BFCCC61001603DD /* ContentView.swift */,
 				C738A0B32BFCCC63001603DD /* Assets.xcassets */,
@@ -65,6 +90,85 @@
 				C738A0B62BFCCC63001603DD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C738A0DE2BFCE7DD001603DD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C738A0DF2BFCE7E2001603DD /* 3DModels */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C738A0DF2BFCE7E2001603DD /* 3DModels */ = {
+			isa = PBXGroup;
+			children = (
+				C738A0F22BFDF41A001603DD /* LongBlueShirt.usdz */,
+				C738A0F02BFDA954001603DD /* BlueCollarPolo.usdz */,
+				C738A0EE2BFDA247001603DD /* LongPolo.usdz */,
+				C738A0EC2BFD9DA7001603DD /* WhitePants.usdz */,
+				C738A0E02BFCE7F3001603DD /* TShirt.usdz */,
+			);
+			path = 3DModels;
+			sourceTree = "<group>";
+		};
+		C738A0F42BFE66DB001603DD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C738A0FE2BFE6753001603DD /* AR */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C738A0F52BFE66DF001603DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C738A0F72BFE66F1001603DD /* Main */,
+				C738A0F62BFE66EC001603DD /* Boarding */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C738A0F62BFE66EC001603DD /* Boarding */ = {
+			isa = PBXGroup;
+			children = (
+				C738A0F82BFE66F9001603DD /* BoardingView.swift */,
+			);
+			path = Boarding;
+			sourceTree = "<group>";
+		};
+		C738A0F72BFE66F1001603DD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C738A0FC2BFE672E001603DD /* Components */,
+				C738A0FA2BFE6714001603DD /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C738A0FC2BFE672E001603DD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C738A0FD2BFE673C001603DD /* AR */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C738A0FD2BFE673C001603DD /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				C738A0BD2BFCCC78001603DD /* ARViewContainer.swift */,
+				C738A0BF2BFCCCF7001603DD /* ARViewExtension.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		C738A0FE2BFE6753001603DD /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				C738A0C12BFCCF01001603DD /* BodySkeleton.swift */,
+			);
+			path = AR;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,7 +229,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C738A0EF2BFDA247001603DD /* LongPolo.usdz in Resources */,
+				C738A0ED2BFD9DA7001603DD /* WhitePants.usdz in Resources */,
+				C738A0F32BFDF41A001603DD /* LongBlueShirt.usdz in Resources */,
+				C738A0F12BFDA954001603DD /* BlueCollarPolo.usdz in Resources */,
 				C738A0B72BFCCC63001603DD /* Preview Assets.xcassets in Resources */,
+				C738A0E12BFCE7F3001603DD /* TShirt.usdz in Resources */,
 				C738A0B42BFCCC63001603DD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +246,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C738A0F92BFE66F9001603DD /* BoardingView.swift in Sources */,
+				C738A0FB2BFE6714001603DD /* MainView.swift in Sources */,
 				C738A0B22BFCCC61001603DD /* ContentView.swift in Sources */,
 				C738A0B02BFCCC61001603DD /* StyleOnApp.swift in Sources */,
+				C738A0C22BFCCF01001603DD /* BodySkeleton.swift in Sources */,
+				C738A0BE2BFCCC78001603DD /* ARViewContainer.swift in Sources */,
+				C738A0C02BFCCCF7001603DD /* ARViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,11 +389,13 @@
 				DEVELOPMENT_TEAM = 5SU889K9XY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StyleOn/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "using AR";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,11 +420,13 @@
 				DEVELOPMENT_TEAM = 5SU889K9XY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StyleOn/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "using AR";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
