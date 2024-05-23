@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C71D3FD72BFF791900DF7FE0 /* SnapPagerCarousel in Frameworks */ = {isa = PBXBuildFile; productRef = C71D3FD62BFF791900DF7FE0 /* SnapPagerCarousel */; };
+		C71D3FD92BFFB04D00DF7FE0 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FD82BFFB04D00DF7FE0 /* CameraButton.swift */; };
+		C71D3FDB2BFFB09200DF7FE0 /* SmallSquareWearable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FDA2BFFB09200DF7FE0 /* SmallSquareWearable.swift */; };
+		C71D3FDD2BFFB10F00DF7FE0 /* MixMatchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FDC2BFFB10F00DF7FE0 /* MixMatchRow.swift */; };
 		C738A0B02BFCCC61001603DD /* StyleOnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0AF2BFCCC61001603DD /* StyleOnApp.swift */; };
 		C738A0B22BFCCC61001603DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0B12BFCCC61001603DD /* ContentView.swift */; };
 		C738A0B42BFCCC63001603DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C738A0B32BFCCC63001603DD /* Assets.xcassets */; };
@@ -21,9 +25,18 @@
 		C738A0F32BFDF41A001603DD /* LongBlueShirt.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C738A0F22BFDF41A001603DD /* LongBlueShirt.usdz */; };
 		C738A0F92BFE66F9001603DD /* BoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0F82BFE66F9001603DD /* BoardingView.swift */; };
 		C738A0FB2BFE6714001603DD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0FA2BFE6714001603DD /* MainView.swift */; };
+		C738A1012BFF4497001603DD /* CircleIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A1002BFF4497001603DD /* CircleIconButton.swift */; };
+		C738A1032BFF459B001603DD /* MainBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A1022BFF459B001603DD /* MainBottomView.swift */; };
+		C738A1062BFF4691001603DD /* WearableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A1052BFF4691001603DD /* WearableType.swift */; };
+		C738A1082BFF4E4D001603DD /* Wearable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A1072BFF4E4D001603DD /* Wearable.swift */; };
+		C738A10B2BFF5163001603DD /* CircleWearable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A10A2BFF5163001603DD /* CircleWearable.swift */; };
+		C738A10D2BFF526A001603DD /* CircleWearableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A10C2BFF526A001603DD /* CircleWearableList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C71D3FD82BFFB04D00DF7FE0 /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
+		C71D3FDA2BFFB09200DF7FE0 /* SmallSquareWearable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSquareWearable.swift; sourceTree = "<group>"; };
+		C71D3FDC2BFFB10F00DF7FE0 /* MixMatchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixMatchRow.swift; sourceTree = "<group>"; };
 		C738A0AC2BFCCC61001603DD /* StyleOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C738A0AF2BFCCC61001603DD /* StyleOnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleOnApp.swift; sourceTree = "<group>"; };
 		C738A0B12BFCCC61001603DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +53,12 @@
 		C738A0F22BFDF41A001603DD /* LongBlueShirt.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = LongBlueShirt.usdz; sourceTree = "<group>"; };
 		C738A0F82BFE66F9001603DD /* BoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingView.swift; sourceTree = "<group>"; };
 		C738A0FA2BFE6714001603DD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C738A1002BFF4497001603DD /* CircleIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconButton.swift; sourceTree = "<group>"; };
+		C738A1022BFF459B001603DD /* MainBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBottomView.swift; sourceTree = "<group>"; };
+		C738A1052BFF4691001603DD /* WearableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearableType.swift; sourceTree = "<group>"; };
+		C738A1072BFF4E4D001603DD /* Wearable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wearable.swift; sourceTree = "<group>"; };
+		C738A10A2BFF5163001603DD /* CircleWearable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleWearable.swift; sourceTree = "<group>"; };
+		C738A10C2BFF526A001603DD /* CircleWearableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleWearableList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C71D3FD72BFF791900DF7FE0 /* SnapPagerCarousel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +135,7 @@
 		C738A0F42BFE66DB001603DD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C738A1042BFF4679001603DD /* Wearable */,
 				C738A0FE2BFE6753001603DD /* AR */,
 			);
 			path = Models;
@@ -149,7 +170,11 @@
 		C738A0FC2BFE672E001603DD /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C738A1092BFF4FBA001603DD /* Wearables */,
+				C738A0FF2BFF4469001603DD /* Buttons */,
 				C738A0FD2BFE673C001603DD /* AR */,
+				C738A1022BFF459B001603DD /* MainBottomView.swift */,
+				C71D3FDC2BFFB10F00DF7FE0 /* MixMatchRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -171,6 +196,34 @@
 			path = AR;
 			sourceTree = "<group>";
 		};
+		C738A0FF2BFF4469001603DD /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				C738A1002BFF4497001603DD /* CircleIconButton.swift */,
+				C71D3FD82BFFB04D00DF7FE0 /* CameraButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		C738A1042BFF4679001603DD /* Wearable */ = {
+			isa = PBXGroup;
+			children = (
+				C738A1052BFF4691001603DD /* WearableType.swift */,
+				C738A1072BFF4E4D001603DD /* Wearable.swift */,
+			);
+			path = Wearable;
+			sourceTree = "<group>";
+		};
+		C738A1092BFF4FBA001603DD /* Wearables */ = {
+			isa = PBXGroup;
+			children = (
+				C738A10A2BFF5163001603DD /* CircleWearable.swift */,
+				C738A10C2BFF526A001603DD /* CircleWearableList.swift */,
+				C71D3FDA2BFFB09200DF7FE0 /* SmallSquareWearable.swift */,
+			);
+			path = Wearables;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -187,6 +240,9 @@
 			dependencies = (
 			);
 			name = StyleOn;
+			packageProductDependencies = (
+				C71D3FD62BFF791900DF7FE0 /* SnapPagerCarousel */,
+			);
 			productName = StyleOn;
 			productReference = C738A0AC2BFCCC61001603DD /* StyleOn.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +271,9 @@
 				Base,
 			);
 			mainGroup = C738A0A32BFCCC61001603DD;
+			packageReferences = (
+				C71D3FD52BFF791900DF7FE0 /* XCRemoteSwiftPackageReference "SnapPagerCarousel" */,
+			);
 			productRefGroup = C738A0AD2BFCCC61001603DD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -246,13 +305,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C738A1012BFF4497001603DD /* CircleIconButton.swift in Sources */,
+				C738A1032BFF459B001603DD /* MainBottomView.swift in Sources */,
+				C738A1062BFF4691001603DD /* WearableType.swift in Sources */,
 				C738A0F92BFE66F9001603DD /* BoardingView.swift in Sources */,
+				C738A10B2BFF5163001603DD /* CircleWearable.swift in Sources */,
 				C738A0FB2BFE6714001603DD /* MainView.swift in Sources */,
+				C71D3FD92BFFB04D00DF7FE0 /* CameraButton.swift in Sources */,
+				C738A1082BFF4E4D001603DD /* Wearable.swift in Sources */,
 				C738A0B22BFCCC61001603DD /* ContentView.swift in Sources */,
 				C738A0B02BFCCC61001603DD /* StyleOnApp.swift in Sources */,
 				C738A0C22BFCCF01001603DD /* BodySkeleton.swift in Sources */,
+				C738A10D2BFF526A001603DD /* CircleWearableList.swift in Sources */,
+				C71D3FDB2BFFB09200DF7FE0 /* SmallSquareWearable.swift in Sources */,
 				C738A0BE2BFCCC78001603DD /* ARViewContainer.swift in Sources */,
 				C738A0C02BFCCCF7001603DD /* ARViewExtension.swift in Sources */,
+				C71D3FDD2BFFB10F00DF7FE0 /* MixMatchRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +530,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C71D3FD52BFF791900DF7FE0 /* XCRemoteSwiftPackageReference "SnapPagerCarousel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MaximeFILIPPI/SnapPagerCarousel";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C71D3FD62BFF791900DF7FE0 /* SnapPagerCarousel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C71D3FD52BFF791900DF7FE0 /* XCRemoteSwiftPackageReference "SnapPagerCarousel" */;
+			productName = SnapPagerCarousel;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C738A0A42BFCCC61001603DD /* Project object */;
 }
