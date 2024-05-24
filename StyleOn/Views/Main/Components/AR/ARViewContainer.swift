@@ -11,12 +11,12 @@ import RealityKit
 
 struct ARViewContainer: UIViewRepresentable {
     func makeUIView(context: Context) -> ARView {
-        let arView = ARView(frame: .zero, cameraMode: .ar, automaticallyConfigureSession: true)
-        arView.setupBodyTracking()
+        ARVariables.arView = ARView(frame: .zero, cameraMode: .ar, automaticallyConfigureSession: true)
+        ARVariables.arView.setupBodyTracking()
         
-        arView.scene.addAnchor(bodySkeletonAnchor)
+        ARVariables.arView.scene.addAnchor(bodySkeletonAnchor)
         
-        return arView
+        return ARVariables.arView
     }
     
     func updateUIView(_ uiView: ARView, context: Context) {

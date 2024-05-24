@@ -9,21 +9,32 @@ import SwiftUI
 
 struct MainView: View {
     @State private var shirts: [Wearable] = []
+    @State private var displayShirts: [Wearable] = []
     @State private var pants: [Wearable] = []
+    @State private var displayPants: [Wearable] = []
     @State private var selectedShirt: Wearable? = nil
     @State private var selectedPant: Wearable? = nil
     @State private var selectedShirtIndex: Int = 0
     @State private var selectedPantIndex: Int = 0
     
-    @State private var timerOn: Bool = false
     @State private var selectedType: WearableType = .Shirts
+    @State private var sheetType: WearableSheet? = nil
+    
+    @State private var timerOn: Bool = false
+    @State private var receiveTimer: Bool = false
+    @State private var timer = Timer.publish(
+        every: 1,
+        on: .main,
+        in: .common
+    ).autoconnect()
+    @State private var currentSecond = 3
     
     private var wearables: Binding<[Wearable]> {
         switch selectedType {
         case .Pants:
-            return $pants
+            return $displayPants
         default:
-            return $shirts
+            return $displayShirts
         }
     }
     
@@ -60,9 +71,19 @@ struct MainView: View {
                         MixMatchRow(
                             selectedShirt: selectedShirt,
                             selectedPant: selectedPant,
-                            onShirtClick: {  },
-                            onPantClick: {  },
-                            onCameraClick: {  }
+                            onShirtClick: {
+                                sheetType = .Shirt
+                            },
+                            onPantClick: {
+                                sheetType = .Pant
+                            },
+                            onCameraClick: {
+                                if timerOn {
+                                    receiveTimer = true
+                                } else {
+                                    takePicture()
+                                }
+                            }
                         )
                         .opacity(
                             selectedType != .MixMatch ? 0 : 1
@@ -72,8 +93,20 @@ struct MainView: View {
                             wearables: wearables,
                             selectedWearable: selectedWearable,
                             selectedIndex: selectedIndex,
+                            onWearableClick: {
+                                if timerOn {
+                                    receiveTimer = true
+                                } else {
+                                    takePicture()
+                                }
+                            },
                             onSearchClick: {
-                                
+                                switch selectedType {
+                                case .Pants:
+                                    sheetType = .Pant
+                                default:
+                                    sheetType = .Shirt
+                                }
                             }
                         )
                         .opacity(
@@ -95,6 +128,9 @@ struct MainView: View {
             shirts = Wearable.getShirts()
             pants = Wearable.getPants()
             
+            displayShirts = shirts.suffix(4).map { $0}
+            displayPants = pants.suffix(4).map { $0}
+            
             updateShirt()
             updatePant()
         }
@@ -109,6 +145,95 @@ struct MainView: View {
                 }
             }
         }
+        .sheet(item: $sheetType) { currentSheet in
+            var wearablesBySheet: [Wearable] {
+                switch currentSheet {
+                case .Shirt:
+                    return shirts
+                case .Pant:
+                    return pants
+                }
+            }
+            
+            var title: String {
+                switch currentSheet {
+                case .Shirt:
+                    return "Select Shirt"
+                case .Pant:
+                    return "Select Pant"
+                }
+            }
+            
+            WearableSheetView(
+                title: title,
+                wearables: wearablesBySheet,
+                onClick: { wearable in
+                    switch currentSheet {
+                    case .Shirt:
+                        if !displayShirts.contains(wearable) {
+                            displayShirts.insert(wearable, at: selectedShirtIndex)
+                        }
+                        
+                        selectedShirt = wearable
+                    case .Pant:
+                        if !displayPants.contains(wearable) {
+                            displayPants.insert(wearable, at: selectedPantIndex)
+                        }
+                        
+                        selectedPant = wearable
+                    }
+                    
+                    sheetType = nil
+                },
+                onDismiss: {
+                    sheetType = nil
+                }
+            )
+        }
+        .onReceive(timer) { _ in
+            if receiveTimer {
+                currentSecond -= 1
+                
+                if currentSecond == 0 {
+                    receiveTimer = false
+                    currentSecond = 3
+                    
+                    takePicture()
+                }
+            }
+        }
+        .overlay {
+            if receiveTimer {
+                ZStack {
+                    Color.black.opacity(0.4)
+                    
+                    ZStack {
+                        Circle()
+                            .trim(
+                                from: 0.0,
+                                to: CGFloat(currentSecond) / 3
+                            )
+                            .stroke(
+                                .white,
+                                style: StrokeStyle(
+                                    lineWidth: 20,
+                                    lineCap: .round
+                                )
+                            )
+                            .frame(width: 200, height: 200)
+                            .rotation3DEffect(Angle(degrees: 270), axis: (x: 0, y: 0, z: 1))
+                            .animation(.linear, value: currentSecond)
+                        
+                        Text("\(currentSecond)")
+                            .font(.system(size: 96))
+                            .bold()
+                            .foregroundStyle(.white)
+                    }
+                }
+                .ignoresSafeArea()
+            }
+        }
+        .navigationBarBackButtonHidden()
     }
     
     private func updateShirt() {
@@ -125,6 +250,15 @@ struct MainView: View {
         let midIndex = pants.count/2
         selectedPant = pants[midIndex]
         selectedPantIndex = midIndex
+    }
+    
+    private func takePicture() {
+        ARVariables.arView.snapshot(saveToHDR: false) { (image) in
+            // Compress the image
+            let compressedImage = UIImage(data: (image?.pngData())!)
+            // Save in the photo album
+            UIImageWriteToSavedPhotosAlbum(compressedImage!, nil, nil, nil)
+        }
     }
 }
 

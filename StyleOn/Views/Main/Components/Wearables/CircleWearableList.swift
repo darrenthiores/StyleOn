@@ -13,6 +13,7 @@ struct CircleWearableList: View {
     @Binding var selectedWearable: Wearable?
     @Binding var selectedIndex: Int
     
+    let onWearableClick: () -> Void
     let onSearchClick: () -> Void
     
     private let width = UIScreen.main.bounds.width
@@ -39,7 +40,7 @@ struct CircleWearableList: View {
                         CircleWearable(
                             wearable: wearable,
                             onClick: {
-                                
+                                onWearableClick()
                             }
                         )
                     }
@@ -60,6 +61,7 @@ struct CircleWearableList: View {
         wearables: .constant(Wearable.getAllWearables()),
         selectedWearable: .constant(nil),
         selectedIndex: .constant(0),
+        onWearableClick: {  },
         onSearchClick: {  }
     )
     .background(.red)
