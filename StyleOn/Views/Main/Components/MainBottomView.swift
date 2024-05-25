@@ -10,6 +10,7 @@ import SwiftUI
 struct MainBottomView: View {
     @Binding var timerOn: Bool
     @Binding var selectedType: WearableType
+    let onSwitchCamera: () -> Void
     
     var body: some View {
         HStack(spacing: 32) {
@@ -40,7 +41,7 @@ struct MainBottomView: View {
             
             CircleIconButton(
                 icon: "arrow.triangle.2.circlepath.camera",
-                onClick: { },
+                onClick: onSwitchCamera,
                 isSelected: false
             )
         }
@@ -53,6 +54,7 @@ struct MainBottomView: View {
 #Preview {
     MainBottomView(
         timerOn: .constant(false),
-        selectedType: .constant(.Shirts)
+        selectedType: .constant(.Shirts),
+        onSwitchCamera: {  }
     )
 }

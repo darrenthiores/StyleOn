@@ -125,7 +125,10 @@ struct MainView: View {
             
             MainBottomView(
                 timerOn: $timerOn,
-                selectedType: $selectedType
+                selectedType: $selectedType,
+                onSwitchCamera: {
+                    arDelegate.switchCamera()
+                }
             )
         }
         .onAppear {

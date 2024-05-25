@@ -56,4 +56,21 @@ class ARViewDelegate: NSObject, ARSessionDelegate {
             }
         }
     }
+    
+    func switchCamera() {
+        guard var newConfig = self.arView?.session.configuration else {
+            fatalError("Unexpectedly failed to get the configuration.")
+        }
+        
+        switch newConfig {
+        case is ARBodyTrackingConfiguration:
+            newConfig = ARFaceTrackingConfiguration()
+        case is ARFaceTrackingConfiguration:
+            newConfig = ARBodyTrackingConfiguration()
+        default:
+            newConfig = ARBodyTrackingConfiguration()
+        }
+        
+        self.arView?.session.run(newConfig)
+    }
 }

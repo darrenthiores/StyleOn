@@ -19,10 +19,17 @@ struct MixMatchRow: View {
             Spacer()
             
             if let selectedShirt = selectedShirt {
-                SmallSquareWearable(
-                    wearable: selectedShirt,
-                    onClick: onShirtClick
-                )
+                if selectedShirt.id == Wearable.searchWearable.id {
+                    SquareIconButton(
+                        icon: "sparkle.magnifyingglass",
+                        onClick: onShirtClick
+                    )
+                } else {
+                    SmallSquareWearable(
+                        wearable: selectedShirt,
+                        onClick: onShirtClick
+                    )
+                }
             }
             
             CameraButton(
@@ -30,10 +37,17 @@ struct MixMatchRow: View {
             )
             
             if let selectedPant = selectedPant {
-                SmallSquareWearable(
-                    wearable: selectedPant,
-                    onClick: onPantClick
-                )
+                if selectedPant.id == Wearable.searchWearable.id {
+                    SquareIconButton(
+                        icon: "sparkle.magnifyingglass",
+                        onClick: onPantClick
+                    )
+                } else {
+                    SmallSquareWearable(
+                        wearable: selectedPant,
+                        onClick: onPantClick
+                    )
+                }
             }
             
             Spacer()

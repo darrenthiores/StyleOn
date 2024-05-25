@@ -148,7 +148,18 @@ class BodySkeleton: Entity {
         pant: Wearable?,
         with bodyAnchor: ARBodyAnchor
     ) {
-        if shirt?.id != self.shirt?.id && shirt?.id != Wearable.searchWearable.id {
+        if shirt?.id != self.shirt?.id {
+            if shirt?.id == Wearable.searchWearable.id {
+                if let shirtEntity = shirtEntity {
+                    self.removeChild(shirtEntity)
+                }
+                
+                self.shirt = nil
+                shirtEntity = nil
+                
+                return
+            }
+            
             if let shirt = shirt {
                 self.shirt = shirt
                 
@@ -167,7 +178,18 @@ class BodySkeleton: Entity {
             }
         }
         
-        if pant?.id != self.pant?.id && pant?.id != Wearable.searchWearable.id {
+        if pant?.id != self.pant?.id {
+            if pant?.id == Wearable.searchWearable.id {
+                if let pantEntity = pantEntity {
+                    self.removeChild(pantEntity)
+                }
+                
+                self.pant = nil
+                pantEntity = nil
+                
+                return
+            }
+            
             if let pant = pant {
                 self.pant = pant
                 

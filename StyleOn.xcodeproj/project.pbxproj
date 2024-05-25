@@ -17,6 +17,7 @@
 		C71D3FE82C0106C600DF7FE0 /* WearableSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FE72C0106C600DF7FE0 /* WearableSheetView.swift */; };
 		C71D3FEA2C01164500DF7FE0 /* ARVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FE92C01164500DF7FE0 /* ARVariables.swift */; };
 		C71D3FEC2C01B6F100DF7FE0 /* BodySkeletonVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FEB2C01B6F000DF7FE0 /* BodySkeletonVariables.swift */; };
+		C71D3FF02C026BAD00DF7FE0 /* SquareIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FEF2C026BAD00DF7FE0 /* SquareIconButton.swift */; };
 		C738A0B02BFCCC61001603DD /* StyleOnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0AF2BFCCC61001603DD /* StyleOnApp.swift */; };
 		C738A0B22BFCCC61001603DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0B12BFCCC61001603DD /* ContentView.swift */; };
 		C738A0B42BFCCC63001603DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C738A0B32BFCCC63001603DD /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		C71D3FE72C0106C600DF7FE0 /* WearableSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearableSheetView.swift; sourceTree = "<group>"; };
 		C71D3FE92C01164500DF7FE0 /* ARVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVariables.swift; sourceTree = "<group>"; };
 		C71D3FEB2C01B6F000DF7FE0 /* BodySkeletonVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodySkeletonVariables.swift; sourceTree = "<group>"; };
+		C71D3FEF2C026BAD00DF7FE0 /* SquareIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareIconButton.swift; sourceTree = "<group>"; };
 		C738A0AC2BFCCC61001603DD /* StyleOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C738A0AF2BFCCC61001603DD /* StyleOnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleOnApp.swift; sourceTree = "<group>"; };
 		C738A0B12BFCCC61001603DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				C738A1002BFF4497001603DD /* CircleIconButton.swift */,
 				C71D3FD82BFFB04D00DF7FE0 /* CameraButton.swift */,
+				C71D3FEF2C026BAD00DF7FE0 /* SquareIconButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				C738A10D2BFF526A001603DD /* CircleWearableList.swift in Sources */,
 				C71D3FDB2BFFB09200DF7FE0 /* SmallSquareWearable.swift in Sources */,
 				C71D3FE02C00D6D100DF7FE0 /* WearableSheet.swift in Sources */,
+				C71D3FF02C026BAD00DF7FE0 /* SquareIconButton.swift in Sources */,
 				C738A0BE2BFCCC78001603DD /* ARViewContainer.swift in Sources */,
 				C738A0C02BFCCCF7001603DD /* ARViewDelegate.swift in Sources */,
 				C71D3FDD2BFFB10F00DF7FE0 /* MixMatchRow.swift in Sources */,
