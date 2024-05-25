@@ -11,6 +11,8 @@ struct BoardingView: View {
     var body: some View {
         VStack(alignment: .center,spacing: 64) {
             Image("Boarding")
+                .resizable()
+                .scaledToFit()
             
             Text("Make sure your body is fully seen in\nthe camera and stand up straight")
                 .font(.largeTitle)
