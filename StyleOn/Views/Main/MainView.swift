@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
+    private var arDelegate: ARViewDelegate = ARViewDelegate()
+    
     @State private var shirts: [Wearable] = []
     @State private var displayShirts: [Wearable] = []
     @State private var pants: [Wearable] = []
@@ -59,8 +61,10 @@ struct MainView: View {
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                ARViewContainer()
-                    .ignoresSafeArea()
+                ARViewContainer(
+                    arDelegate: arDelegate
+                )
+                .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
                     Spacer()
@@ -133,17 +137,17 @@ struct MainView: View {
             
             updateShirt()
             updatePant()
+            
+            setWearables()
         }
         .onChange(of: selectedType) {
-            if selectedType == .MixMatch {
-                if selectedShirt?.id == Wearable.searchWearable.id {
-                    selectedShirt = shirts[selectedShirtIndex-1]
-                }
-                
-                if selectedPant?.id == Wearable.searchWearable.id {
-                    selectedPant = pants[selectedPantIndex-1]
-                }
-            }
+            setWearables()
+        }
+        .onChange(of: selectedShirt) {
+            setWearables()
+        }
+        .onChange(of: selectedPant) {
+            setWearables()
         }
         .sheet(item: $sheetType) { currentSheet in
             var wearablesBySheet: [Wearable] {
@@ -240,6 +244,14 @@ struct MainView: View {
         selectedShirt = nil
         
         let midIndex = shirts.count/2
+        
+        if midIndex == shirts.count - 1 && midIndex > 0 {
+            selectedShirt = shirts[midIndex-1]
+            selectedShirtIndex = midIndex-1
+            
+            return
+        }
+        
         selectedShirt = shirts[midIndex]
         selectedShirtIndex = midIndex
     }
@@ -248,6 +260,14 @@ struct MainView: View {
         selectedPant = nil
         
         let midIndex = pants.count/2
+        
+        if midIndex == pants.count - 1 && midIndex > 0 {
+            selectedPant = pants[midIndex-1]
+            selectedPantIndex = midIndex-1
+            
+            return
+        }
+        
         selectedPant = pants[midIndex]
         selectedPantIndex = midIndex
     }
@@ -258,6 +278,25 @@ struct MainView: View {
             let compressedImage = UIImage(data: (image?.pngData())!)
             // Save in the photo album
             UIImageWriteToSavedPhotosAlbum(compressedImage!, nil, nil, nil)
+        }
+    }
+    
+    private func setWearables() {
+        switch selectedType {
+        case .Pants:
+            arDelegate.setupWearables(shirt: nil, pant: selectedPant)
+        case .Shirts:
+            arDelegate.setupWearables(shirt: selectedShirt, pant: nil)
+        case .MixMatch:
+            if selectedShirt?.id == Wearable.searchWearable.id {
+                selectedShirt = shirts[selectedShirtIndex-1]
+            }
+            
+            if selectedPant?.id == Wearable.searchWearable.id {
+                selectedPant = pants[selectedPantIndex-1]
+            }
+            
+            arDelegate.setupWearables(shirt: selectedShirt, pant: selectedPant)
         }
     }
 }

@@ -11,6 +11,8 @@ import RealityKit
 
 class BodySkeleton: Entity {
     var joints: [String: Entity] = [:]
+    var shirt: Wearable?
+    var pant: Wearable?
     var shirtEntity: Entity?
     var pantEntity: Entity?
     // var imageEntity: Entity?
@@ -27,37 +29,37 @@ class BodySkeleton: Entity {
             self.addChild(jointEntity)
         }
         
-        do {
-            let path = Bundle.main.path(forResource: "BlueCollarPolo", ofType: "usdz")!
-            let url = URL(fileURLWithPath: path)
-            var shirtEntity = try Entity.load(contentsOf: url)
-            
-            shirtEntity.scale = [0.25, 0.25, 0.25]
-            shirtEntity.position = simd_make_float3(bodyAnchor.transform.columns.3)
-            
-            self.addChild(shirtEntity)
-            self.shirtEntity = shirtEntity
-            
-        } catch {
-            print("load shirt error \(error.localizedDescription)")
-        }
-        
-        do {
-            let path = Bundle.main.path(forResource: "WhitePants", ofType: "usdz")!
-            let url = URL(fileURLWithPath: path)
-            var pantEntity = try Entity.load(contentsOf: url)
-            
-            pantEntity.scale = [0.4, 0.4, 0.4]
-            pantEntity.position = simd_make_float3(bodyAnchor.transform.columns.3)
-            
-            self.addChild(pantEntity)
-            self.pantEntity = pantEntity
-            
-            print("load pants succeed")
-            
-        } catch {
-            print("load pants error \(error.localizedDescription)")
-        }
+//        do {
+//            let path = Bundle.main.path(forResource: "BlueCollarPolo", ofType: "usdz")!
+//            let url = URL(fileURLWithPath: path)
+//            var shirtEntity = try Entity.load(contentsOf: url)
+//            
+//            shirtEntity.scale = [0.25, 0.25, 0.25]
+//            shirtEntity.position = simd_make_float3(bodyAnchor.transform.columns.3)
+//            
+//            self.addChild(shirtEntity)
+//            self.shirtEntity = shirtEntity
+//            
+//        } catch {
+//            print("load shirt error \(error.localizedDescription)")
+//        }
+//        
+//        do {
+//            let path = Bundle.main.path(forResource: "WhitePants", ofType: "usdz")!
+//            let url = URL(fileURLWithPath: path)
+//            var pantEntity = try Entity.load(contentsOf: url)
+//            
+//            pantEntity.scale = [0.4, 0.4, 0.4]
+//            pantEntity.position = simd_make_float3(bodyAnchor.transform.columns.3)
+//            
+//            self.addChild(pantEntity)
+//            self.pantEntity = pantEntity
+//            
+//            print("load pants succeed")
+//            
+//        } catch {
+//            print("load pants error \(error.localizedDescription)")
+//        }
         
 //        do {
 //            var plane: MeshResource = .generatePlane(width: 1, depth: 0.45)
@@ -117,16 +119,19 @@ class BodySkeleton: Entity {
                 jointEntity.position = rootPosition + jointOffset
                 jointEntity.orientation = Transform(matrix: jointTransform).rotation
                 
-                if jointName == "spine_6_joint" {
+                if jointName == "spine_5_joint" {
                     shirtEntity?.position = rootPosition + jointOffset
 //                    shirtEntity?.orientation = Transform(matrix: jointTransform).rotation
+                    
+                    let positiveY = jointOffset.y < 0 ? -jointOffset.y : jointOffset.y
+                    pantEntity?.position = rootPosition - simd_float3(0, positiveY * 2, 0)
                 }
                 
             }
         }
         
-        let positiveY = rootPosition.y < 0 ? -rootPosition.y : rootPosition.y
-        pantEntity?.position = rootPosition - simd_float3(0, positiveY, 0)
+//        let positiveY = rootPosition.y < 0 ? -rootPosition.y : rootPosition.y
+//        pantEntity?.position = rootPosition - simd_float3(0, positiveY, 0)
         
 //        if let rootJointTransform = bodyAnchor.skeleton.modelTransform(for: ARSkeleton.JointName.root) {
 //             shirtEntity?.orientation = Transform(matrix: rootJointTransform).rotation
@@ -137,7 +142,92 @@ class BodySkeleton: Entity {
         // shirtEntity?.position = simd_make_float3(bodyAnchor.transform.columns.3)
         // imageEntity?.position = simd_make_float3(bodyAnchor.transform.columns.3)
     }
+    
+    func setWearables(
+        shirt: Wearable?,
+        pant: Wearable?,
+        with bodyAnchor: ARBodyAnchor
+    ) {
+        if shirt?.id != self.shirt?.id && shirt?.id != Wearable.searchWearable.id {
+            if let shirt = shirt {
+                self.shirt = shirt
+                
+                if let shirtEntity = shirtEntity {
+                    self.removeChild(shirtEntity)
+                }
+                
+                loadShirt(shirt: shirt, with: bodyAnchor)
+            } else {
+                if let shirtEntity = shirtEntity {
+                    self.removeChild(shirtEntity)
+                }
+                
+                self.shirt = nil
+                shirtEntity = nil
+            }
+        }
+        
+        if pant?.id != self.pant?.id && pant?.id != Wearable.searchWearable.id {
+            if let pant = pant {
+                self.pant = pant
+                
+                if let pantEntity = pantEntity {
+                    self.removeChild(pantEntity)
+                }
+                
+                loadPant(pant: pant, with: bodyAnchor)
+            } else {
+                if let pantEntity = pantEntity {
+                    self.removeChild(pantEntity)
+                }
+                
+                self.pant = nil
+                pantEntity = nil
+            }
+        }
+    }
+    
+    private func loadShirt(
+        shirt: Wearable,
+        with bodyAnchor: ARBodyAnchor
+    ) {
+        DispatchQueue.main.async {
+            do {
+                let path = Bundle.main.path(forResource: shirt.id, ofType: "usdz")!
+                let url = URL(fileURLWithPath: path)
+                var shirtEntity = try Entity.load(contentsOf: url)
+                
+                shirtEntity.scale = shirt.scale
+                shirtEntity.position = simd_make_float3(bodyAnchor.transform.columns.3)
+                
+                self.addChild(shirtEntity)
+                self.shirtEntity = shirtEntity
+                
+            } catch {
+                print("load shirt error \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func loadPant(
+        pant: Wearable,
+        with bodyAnchor: ARBodyAnchor
+    ) {
+        DispatchQueue.main.async {
+            do {
+                let path = Bundle.main.path(forResource: pant.id, ofType: "usdz")!
+                let url = URL(fileURLWithPath: path)
+                var pantEntity = try Entity.load(contentsOf: url)
+                
+                pantEntity.scale = pant.scale
+                pantEntity.position = simd_make_float3(bodyAnchor.transform.columns.3)
+                
+                self.addChild(pantEntity)
+                self.pantEntity = pantEntity
+                
+            } catch {
+                print("load pant error \(error.localizedDescription)")
+            }
+        }
+    }
 }
-
-var bodySkeleton: BodySkeleton?
-var bodySkeletonAnchor = AnchorEntity()

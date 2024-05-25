@@ -18,9 +18,9 @@ class Wearable: Identifiable, Hashable, Equatable {
     }
     
     let id: String
-    let scale: [Double]
+    let scale: SIMD3<Float>
     
-    init(id: String, scale: [Double]) {
+    init(id: String, scale: SIMD3<Float>) {
         self.id = id
         self.scale = scale
     }
@@ -28,7 +28,7 @@ class Wearable: Identifiable, Hashable, Equatable {
     static let defaultWearable: Wearable = getAllWearables()[0]
     static let searchWearable: Wearable = Wearable(
         id: "Search",
-        scale: []
+        scale: [0, 0, 0]
     )
     
     static func getAllWearables() -> [Wearable] {
@@ -51,7 +51,7 @@ class Wearable: Identifiable, Hashable, Equatable {
             ),
             Wearable(
                 id: "TShirt",
-                scale: [0.25, 0.25, 0.25]
+                scale: [0.0025, 0.0025, 0.0025]
             ),
             searchWearable
         ]
@@ -73,7 +73,7 @@ class Wearable: Identifiable, Hashable, Equatable {
             ),
             Wearable(
                 id: "TShirt",
-                scale: [0.25, 0.25, 0.25]
+                scale: [0.0025, 0.0025, 0.0025]
             ),
             searchWearable
         ]

@@ -9,12 +9,23 @@ import Foundation
 import RealityKit
 import ARKit
 
-extension ARView: ARSessionDelegate {
-    func setupBodyTracking() {
-        let config = ARBodyTrackingConfiguration()
-        self.session.run(config)
+class ARViewDelegate: NSObject, ARSessionDelegate {
+    var arView: ARView?
+    var shirt: Wearable?
+    var pant: Wearable?
+    
+    func setupBodyTracking(_ arView: ARView) {
+        self.arView = arView
         
-        self.session.delegate = self
+        let config = ARBodyTrackingConfiguration()
+        self.arView?.session.run(config)
+        
+        self.arView?.session.delegate = self
+    }
+    
+    func setupWearables(shirt: Wearable?, pant: Wearable?) {
+        self.shirt = shirt
+        self.pant = pant
     }
     
     public func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
@@ -33,13 +44,14 @@ extension ARView: ARSessionDelegate {
 //                let leftHandPosition = rootJointPosition + leftHandOffset
 //                print("leftHand: \(leftHandPosition)")
                 
-                if let skeleton = bodySkeleton {
+                if let skeleton = BodySkeletonVariables.bodySkeleton {
+                    skeleton.setWearables(shirt: shirt, pant: pant, with: bodyAnchor)
                     skeleton.update(with: bodyAnchor)
                 } else {
                     let skeleton = BodySkeleton(for: bodyAnchor)
-                    bodySkeleton = skeleton
+                    BodySkeletonVariables.bodySkeleton = skeleton
                     
-                    bodySkeletonAnchor.addChild(skeleton)
+                    BodySkeletonVariables.bodySkeletonAnchor.addChild(skeleton)
                 }
             }
         }
