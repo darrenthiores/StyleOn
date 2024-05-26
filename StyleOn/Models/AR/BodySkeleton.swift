@@ -308,9 +308,7 @@ class BodySkeleton: Entity {
     }
     
     func reset() {
-        for children in self.children {
-            self.removeChild(children)
-        }
+        self.children.removeAll()
         
         shirt = nil
         self.shirtEntity = nil

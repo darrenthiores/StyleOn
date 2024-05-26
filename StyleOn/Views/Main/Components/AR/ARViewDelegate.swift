@@ -73,10 +73,8 @@ class ARViewDelegate: NSObject, ARSessionDelegate {
         
         if let skeleton = BodySkeletonVariables.bodySkeleton {
             skeleton.reset()
-            
-            if skeleton.children.isEmpty {
-                self.arView?.session.run(newConfig)
-            }
         }
+        
+        self.arView?.session.run(newConfig)
     }
 }
