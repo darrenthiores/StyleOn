@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    private var arDelegate: ARViewDelegate = ARViewDelegate()
+    @State private var arDelegate: ARViewDelegate = ARViewDelegate()
     
     @State private var shirts: [Wearable] = []
     @State private var displayShirts: [Wearable] = []
@@ -30,6 +30,9 @@ struct MainView: View {
         in: .common
     ).autoconnect()
     @State private var currentSecond = 3
+    
+    @State private var capturedImage: UIImage?
+    @State private var presentResultSheet: Bool = false
     
     private var wearables: Binding<[Wearable]> {
         switch selectedType {
@@ -145,6 +148,9 @@ struct MainView: View {
         }
         .onDisappear {
             timer.upstream.connect().cancel()
+            
+            // not sure going to make any issues or not
+            arDelegate.arView?.session.pause()
         }
         .onChange(of: selectedType) {
             setWearables()
@@ -154,6 +160,11 @@ struct MainView: View {
         }
         .onChange(of: selectedPant) {
             setWearables()
+        }
+        .onChange(of: capturedImage) {
+            if capturedImage != nil {
+                presentResultSheet = true
+            }
         }
         .sheet(item: $sheetType) { currentSheet in
             var wearablesBySheet: [Wearable] {
@@ -199,6 +210,25 @@ struct MainView: View {
                     sheetType = nil
                 }
             )
+        }
+        .sheet(isPresented: $presentResultSheet) {
+            PhotoResultSheetView(
+                result: capturedImage,
+                onSave: {
+                    DispatchQueue.main.async {
+                        if let result = capturedImage {
+                            UIImageWriteToSavedPhotosAlbum(result, nil, nil, nil)
+                            capturedImage = nil
+                        }
+                        
+                        presentResultSheet = false
+                    }
+                },
+                onDismiss: {
+                    presentResultSheet = false
+                }
+            )
+            .presentationDetents([.fraction(0.3)])
         }
         .onReceive(timer) { _ in
             if receiveTimer {
@@ -280,10 +310,8 @@ struct MainView: View {
     
     private func takePicture() {
         arDelegate.arView?.snapshot(saveToHDR: false) { (image) in
-            // Compress the image
             let compressedImage = UIImage(data: (image?.pngData())!)
-            // Save in the photo album
-            UIImageWriteToSavedPhotosAlbum(compressedImage!, nil, nil, nil)
+            capturedImage = compressedImage
         }
     }
     
