@@ -107,12 +107,12 @@
 			path = Tilt;
 			sourceTree = "<group>";
 		};
-		C71D3FF42C02DCB900DF7FE0 /* Accelerometer */ = {
+		C71D3FF42C02DCB900DF7FE0 /* Motion */ = {
 			isa = PBXGroup;
 			children = (
 				C71D3FF52C02DCCC00DF7FE0 /* AccelerometerManager.swift */,
 			);
-			path = Accelerometer;
+			path = Motion;
 			sourceTree = "<group>";
 		};
 		C738A0A32BFCCC61001603DD = {
@@ -177,7 +177,7 @@
 		C738A0F42BFE66DB001603DD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C71D3FF42C02DCB900DF7FE0 /* Accelerometer */,
+				C71D3FF42C02DCB900DF7FE0 /* Motion */,
 				C738A1042BFF4679001603DD /* Wearable */,
 				C738A0FE2BFE6753001603DD /* AR */,
 			);

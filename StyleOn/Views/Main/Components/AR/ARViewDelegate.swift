@@ -53,6 +53,18 @@ class ARViewDelegate: NSObject, ARSessionDelegate {
                     BodySkeletonVariables.bodySkeletonAnchor.addChild(skeleton)
                 }
             }
+            
+            if let faceAnchor = anchor as? ARFaceAnchor {
+                if let skeleton = BodySkeletonVariables.bodySkeleton {
+                    skeleton.setWearables(shirt: shirt, pant: pant, with: faceAnchor)
+                    skeleton.update(with: faceAnchor)
+                } else {
+                    let skeleton = BodySkeleton(for: faceAnchor)
+                    BodySkeletonVariables.bodySkeleton = skeleton
+                    
+                    BodySkeletonVariables.bodySkeletonAnchor.addChild(skeleton)
+                }
+            }
         }
     }
     
@@ -70,6 +82,12 @@ class ARViewDelegate: NSObject, ARSessionDelegate {
             newConfig = ARBodyTrackingConfiguration()
         }
         
-        self.arView?.session.run(newConfig)
+        if let skeleton = BodySkeletonVariables.bodySkeleton {
+            skeleton.reset()
+            
+            if skeleton.children.isEmpty {
+                self.arView?.session.run(newConfig)
+            }
+        }
     }
 }
