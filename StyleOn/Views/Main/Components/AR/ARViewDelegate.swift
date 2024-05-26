@@ -30,19 +30,18 @@ class ARViewDelegate: NSObject, ARSessionDelegate {
     
     public func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
         for anchor in anchors {
+            
             if let bodyAnchor = anchor as? ARBodyAnchor {
-//                print("Updated body anchor")
-//                
-//                let skeleton = bodyAnchor.skeleton
-//                
-//                let rootJointTransform = skeleton.modelTransform(for: .root)!
-//                let rootJointPosition = simd_make_float3(rootJointTransform.columns.3)
-//                print("root \(rootJointPosition)")
-//                
-//                let leftHandTransform = skeleton.modelTransform(for: .leftHand)!
-//                let leftHandOffset = simd_make_float3(leftHandTransform.columns.3)
-//                let leftHandPosition = rootJointPosition + leftHandOffset
-//                print("leftHand: \(leftHandPosition)")
+                
+                // let skeleton = bodyAnchor.skeleton
+                // let rootJointTransform = skeleton.modelTransform(for: .root)!
+                // let rootJointPosition = simd_make_float3(rootJointTransform.columns.3)
+                // print("root \(rootJointPosition)")
+                
+                // let leftHandTransform = skeleton.modelTransform(for: .leftHand)!
+                // let leftHandOffset = simd_make_float3(leftHandTransform.columns.3)
+                // let leftHandPosition = rootJointPosition + leftHandOffset
+                // print("leftHand: \(leftHandPosition)")
                 
                 if let skeleton = BodySkeletonVariables.bodySkeleton {
                     skeleton.setWearables(shirt: shirt, pant: pant, with: bodyAnchor)

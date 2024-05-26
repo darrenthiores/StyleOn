@@ -19,7 +19,7 @@ struct BoardingView: View {
                 .multilineTextAlignment(.center)
             
             NavigationLink {
-                MainView()
+                TiltPadView()
             } label: {
                 Text("Start")
                     .font(.title3)

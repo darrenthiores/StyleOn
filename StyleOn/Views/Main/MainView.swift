@@ -143,6 +143,9 @@ struct MainView: View {
             
             setWearables()
         }
+        .onDisappear {
+            timer.upstream.connect().cancel()
+        }
         .onChange(of: selectedType) {
             setWearables()
         }
@@ -276,7 +279,7 @@ struct MainView: View {
     }
     
     private func takePicture() {
-        ARVariables.arView.snapshot(saveToHDR: false) { (image) in
+        arDelegate.arView?.snapshot(saveToHDR: false) { (image) in
             // Compress the image
             let compressedImage = UIImage(data: (image?.pngData())!)
             // Save in the photo album

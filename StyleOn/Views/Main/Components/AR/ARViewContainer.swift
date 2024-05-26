@@ -13,13 +13,13 @@ struct ARViewContainer: UIViewRepresentable {
     var arDelegate: ARViewDelegate
     
     func makeUIView(context: Context) -> ARView {
-        ARVariables.arView = ARView(frame: .zero, cameraMode: .ar, automaticallyConfigureSession: true)
+        let arView = ARView(frame: .zero, cameraMode: .ar, automaticallyConfigureSession: true)
         
-        arDelegate.setupBodyTracking(ARVariables.arView)
+        arDelegate.setupBodyTracking(arView)
         
-        ARVariables.arView.scene.addAnchor(BodySkeletonVariables.bodySkeletonAnchor)
+        arView.scene.addAnchor(BodySkeletonVariables.bodySkeletonAnchor)
         
-        return ARVariables.arView
+        return arView
     }
     
     func updateUIView(_ uiView: ARView, context: Context) {

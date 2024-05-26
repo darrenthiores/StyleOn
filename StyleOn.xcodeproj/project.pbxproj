@@ -15,9 +15,10 @@
 		C71D3FE42C00F96F00DF7FE0 /* SquareWearable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FE32C00F96F00DF7FE0 /* SquareWearable.swift */; };
 		C71D3FE62C00FAAE00DF7FE0 /* WearableGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FE52C00FAAE00DF7FE0 /* WearableGrid.swift */; };
 		C71D3FE82C0106C600DF7FE0 /* WearableSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FE72C0106C600DF7FE0 /* WearableSheetView.swift */; };
-		C71D3FEA2C01164500DF7FE0 /* ARVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FE92C01164500DF7FE0 /* ARVariables.swift */; };
 		C71D3FEC2C01B6F100DF7FE0 /* BodySkeletonVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FEB2C01B6F000DF7FE0 /* BodySkeletonVariables.swift */; };
 		C71D3FF02C026BAD00DF7FE0 /* SquareIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FEF2C026BAD00DF7FE0 /* SquareIconButton.swift */; };
+		C71D3FF32C02DCAB00DF7FE0 /* TiltPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FF22C02DCAB00DF7FE0 /* TiltPadView.swift */; };
+		C71D3FF62C02DCCC00DF7FE0 /* AccelerometerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D3FF52C02DCCC00DF7FE0 /* AccelerometerManager.swift */; };
 		C738A0B02BFCCC61001603DD /* StyleOnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0AF2BFCCC61001603DD /* StyleOnApp.swift */; };
 		C738A0B22BFCCC61001603DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A0B12BFCCC61001603DD /* ContentView.swift */; };
 		C738A0B42BFCCC63001603DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C738A0B32BFCCC63001603DD /* Assets.xcassets */; };
@@ -48,9 +49,10 @@
 		C71D3FE32C00F96F00DF7FE0 /* SquareWearable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareWearable.swift; sourceTree = "<group>"; };
 		C71D3FE52C00FAAE00DF7FE0 /* WearableGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearableGrid.swift; sourceTree = "<group>"; };
 		C71D3FE72C0106C600DF7FE0 /* WearableSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearableSheetView.swift; sourceTree = "<group>"; };
-		C71D3FE92C01164500DF7FE0 /* ARVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVariables.swift; sourceTree = "<group>"; };
 		C71D3FEB2C01B6F000DF7FE0 /* BodySkeletonVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodySkeletonVariables.swift; sourceTree = "<group>"; };
 		C71D3FEF2C026BAD00DF7FE0 /* SquareIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareIconButton.swift; sourceTree = "<group>"; };
+		C71D3FF22C02DCAB00DF7FE0 /* TiltPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiltPadView.swift; sourceTree = "<group>"; };
+		C71D3FF52C02DCCC00DF7FE0 /* AccelerometerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerManager.swift; sourceTree = "<group>"; };
 		C738A0AC2BFCCC61001603DD /* StyleOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C738A0AF2BFCCC61001603DD /* StyleOnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleOnApp.swift; sourceTree = "<group>"; };
 		C738A0B12BFCCC61001603DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,22 @@
 				C71D3FDF2C00D6D100DF7FE0 /* WearableSheet.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C71D3FF12C02DCA200DF7FE0 /* Tilt */ = {
+			isa = PBXGroup;
+			children = (
+				C71D3FF22C02DCAB00DF7FE0 /* TiltPadView.swift */,
+			);
+			path = Tilt;
+			sourceTree = "<group>";
+		};
+		C71D3FF42C02DCB900DF7FE0 /* Accelerometer */ = {
+			isa = PBXGroup;
+			children = (
+				C71D3FF52C02DCCC00DF7FE0 /* AccelerometerManager.swift */,
+			);
+			path = Accelerometer;
 			sourceTree = "<group>";
 		};
 		C738A0A32BFCCC61001603DD = {
@@ -157,6 +175,7 @@
 		C738A0F42BFE66DB001603DD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C71D3FF42C02DCB900DF7FE0 /* Accelerometer */,
 				C738A1042BFF4679001603DD /* Wearable */,
 				C738A0FE2BFE6753001603DD /* AR */,
 			);
@@ -166,8 +185,9 @@
 		C738A0F52BFE66DF001603DD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C738A0F72BFE66F1001603DD /* Main */,
 				C738A0F62BFE66EC001603DD /* Boarding */,
+				C71D3FF12C02DCA200DF7FE0 /* Tilt */,
+				C738A0F72BFE66F1001603DD /* Main */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,7 +228,6 @@
 			children = (
 				C738A0BD2BFCCC78001603DD /* ARViewContainer.swift */,
 				C738A0BF2BFCCCF7001603DD /* ARViewDelegate.swift */,
-				C71D3FE92C01164500DF7FE0 /* ARVariables.swift */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -338,11 +357,12 @@
 				C738A1032BFF459B001603DD /* MainBottomView.swift in Sources */,
 				C71D3FEC2C01B6F100DF7FE0 /* BodySkeletonVariables.swift in Sources */,
 				C738A1062BFF4691001603DD /* WearableType.swift in Sources */,
+				C71D3FF62C02DCCC00DF7FE0 /* AccelerometerManager.swift in Sources */,
 				C738A0F92BFE66F9001603DD /* BoardingView.swift in Sources */,
 				C738A10B2BFF5163001603DD /* CircleWearable.swift in Sources */,
 				C738A0FB2BFE6714001603DD /* MainView.swift in Sources */,
-				C71D3FEA2C01164500DF7FE0 /* ARVariables.swift in Sources */,
 				C71D3FD92BFFB04D00DF7FE0 /* CameraButton.swift in Sources */,
+				C71D3FF32C02DCAB00DF7FE0 /* TiltPadView.swift in Sources */,
 				C738A1082BFF4E4D001603DD /* Wearable.swift in Sources */,
 				C738A0B22BFCCC61001603DD /* ContentView.swift in Sources */,
 				C738A0B02BFCCC61001603DD /* StyleOnApp.swift in Sources */,
