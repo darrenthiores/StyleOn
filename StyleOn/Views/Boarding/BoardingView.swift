@@ -18,8 +18,10 @@ struct BoardingView: View {
                 .font(.largeTitle)
                 .multilineTextAlignment(.center)
             
-            NavigationLink {
-                TiltPadView()
+            Button {
+                DispatchQueue.main.async {
+                    UserDefaults.standard.set(false, forKey: "showBoarding")
+                }
             } label: {
                 Text("Start")
                     .font(.title3)

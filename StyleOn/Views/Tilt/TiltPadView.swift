@@ -68,7 +68,6 @@ struct TiltPadView: View {
         .onDisappear {
             timer.upstream.connect().cancel()
         }
-        .navigationBarBackButtonHidden(true)
         .navigationDestination(isPresented: $presentMain) {
             MainView()
         }
