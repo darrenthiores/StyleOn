@@ -30,7 +30,6 @@ class ARViewDelegate: NSObject, ARSessionDelegate {
     
     public func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
         for anchor in anchors {
-            
             if let bodyAnchor = anchor as? ARBodyAnchor {
                 if let skeleton = BodySkeletonVariables.bodySkeleton {
                     skeleton.setWearables(shirt: shirt, pant: pant, with: bodyAnchor)

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
+    @AppStorage("showCamAlert") private var showCamAlert: Bool = true
+    @State private var showAlert: Bool = false
     @State private var arDelegate: ARViewDelegate = ARViewDelegate()
     
     @State private var shirts: [Wearable] = []
@@ -131,6 +133,10 @@ struct MainView: View {
                 selectedType: $selectedType,
                 onSwitchCamera: {
                     arDelegate.switchCamera()
+                    
+                    if showCamAlert {
+                        showAlert = true
+                    }
                 }
             )
         }
@@ -229,6 +235,20 @@ struct MainView: View {
                 }
             )
             .presentationDetents([.fraction(0.3)])
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Front Camera Usage Warning"),
+                message: Text(
+                    "Currently Apple AR Front Camera technology don't support body tracking, therefore the front camera may not accurate on placing the clothes on your body. I suggest using rear camera for the best experience."
+                ),
+                dismissButton: .default(Text("Close"))
+            )
+        }
+        .onChange(of: showAlert) {
+            if !showAlert {
+                 showCamAlert = false
+            }
         }
         .onReceive(timer) { _ in
             if receiveTimer {

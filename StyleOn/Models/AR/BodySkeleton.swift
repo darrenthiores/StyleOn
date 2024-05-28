@@ -71,11 +71,10 @@ class BodySkeleton: Entity {
         )
     }
     
-    // TODO: double function name sama yg dibawah? kenapa ga digabung?
     func setWearables(
         shirt: Wearable?,
         pant: Wearable?,
-        with bodyAnchor: ARBodyAnchor
+        with anchor: ARAnchor
     ) {
         if shirt?.id != self.shirt?.id {
             if shirt?.id == Wearable.searchWearable.id {
@@ -96,7 +95,7 @@ class BodySkeleton: Entity {
                     self.removeChild(shirtEntity)
                 }
                 
-                loadShirt(shirt: shirt, with: bodyAnchor)
+                loadShirt(shirt: shirt, with: anchor)
             } else {
                 if let shirtEntity = shirtEntity {
                     self.removeChild(shirtEntity)
@@ -126,73 +125,7 @@ class BodySkeleton: Entity {
                     self.removeChild(pantEntity)
                 }
                 
-                loadPant(pant: pant, with: bodyAnchor)
-            } else {
-                if let pantEntity = pantEntity {
-                    self.removeChild(pantEntity)
-                }
-                
-                self.pant = nil
-                pantEntity = nil
-            }
-        }
-    }
-    
-    func setWearables(
-        shirt: Wearable?,
-        pant: Wearable?,
-        with faceAnchor: ARFaceAnchor
-    ) {
-        if shirt?.id != self.shirt?.id {
-            if shirt?.id == Wearable.searchWearable.id {
-                if let shirtEntity = shirtEntity {
-                    self.removeChild(shirtEntity)
-                }
-                
-                self.shirt = nil
-                shirtEntity = nil
-                
-                return
-            }
-            
-            if let shirt = shirt {
-                self.shirt = shirt
-                
-                if let shirtEntity = shirtEntity {
-                    self.removeChild(shirtEntity)
-                }
-                
-                loadShirt(shirt: shirt, with: faceAnchor)
-            } else {
-                if let shirtEntity = shirtEntity {
-                    self.removeChild(shirtEntity)
-                }
-                
-                self.shirt = nil
-                shirtEntity = nil
-            }
-        }
-        
-        if pant?.id != self.pant?.id {
-            if pant?.id == Wearable.searchWearable.id {
-                if let pantEntity = pantEntity {
-                    self.removeChild(pantEntity)
-                }
-                
-                self.pant = nil
-                pantEntity = nil
-                
-                return
-            }
-            
-            if let pant = pant {
-                self.pant = pant
-                
-                if let pantEntity = pantEntity {
-                    self.removeChild(pantEntity)
-                }
-                
-                loadPant(pant: pant, with: faceAnchor)
+                loadPant(pant: pant, with: anchor)
             } else {
                 if let pantEntity = pantEntity {
                     self.removeChild(pantEntity)
@@ -206,46 +139,33 @@ class BodySkeleton: Entity {
     
     private func loadShirt(
         shirt: Wearable,
-        with bodyAnchor: ARBodyAnchor
+        with anchor: ARAnchor
     ) {
         DispatchQueue.main.async {
             do {
                 let path = Bundle.main.path(forResource: shirt.id, ofType: "usdz")!
                 let url = URL(fileURLWithPath: path)
-                var shirtEntity = try Entity.load(contentsOf: url)
-                
-                shirtEntity.scale = shirt.scale
-                shirtEntity.position = simd_make_float3(bodyAnchor.transform.columns.3)
-                
-                self.addChild(shirtEntity)
-                self.shirtEntity = shirtEntity
-                
-            } catch {
-                print("load shirt error \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    private func loadShirt(
-        shirt: Wearable,
-        with faceAnchor: ARFaceAnchor
-    ) {
-        DispatchQueue.main.async {
-            do {
-                let path = Bundle.main.path(forResource: shirt.id, ofType: "usdz")!
-                let url = URL(fileURLWithPath: path)
-                var shirtEntity = try Entity.load(contentsOf: url)
+                let shirtEntity = try Entity.load(contentsOf: url)
                 
                 shirtEntity.scale = shirt.scale
                 
-                let rootPosition = faceAnchor.transform.columns.3
-                let positiveY = rootPosition.y < 0 ? -rootPosition.y : rootPosition.y
+                guard anchor is ARFaceAnchor || anchor is ARBodyAnchor else {
+                    print("Anchor is not Face or Body Anchor")
+                    return
+                }
                 
-                shirtEntity.position = simd_make_float3(
-                    rootPosition.x,
-                    rootPosition.y - positiveY * 4,
-                    rootPosition.z
-                )
+                if anchor is ARBodyAnchor {
+                    shirtEntity.position = simd_make_float3(anchor.transform.columns.3)
+                } else {
+                    let rootPosition = anchor.transform.columns.3
+                    let positiveY = rootPosition.y < 0 ? -rootPosition.y : rootPosition.y
+                    
+                    shirtEntity.position = simd_make_float3(
+                        rootPosition.x,
+                        rootPosition.y - positiveY * 4,
+                        rootPosition.z
+                    )
+                }
                 
                 self.addChild(shirtEntity)
                 self.shirtEntity = shirtEntity
@@ -258,47 +178,33 @@ class BodySkeleton: Entity {
     
     private func loadPant(
         pant: Wearable,
-        with bodyAnchor: ARBodyAnchor
+        with anchor: ARAnchor
     ) {
         DispatchQueue.main.async {
             do {
                 let path = Bundle.main.path(forResource: pant.id, ofType: "usdz")!
                 let url = URL(fileURLWithPath: path)
-                var pantEntity = try Entity.load(contentsOf: url)
-                
-                pantEntity.scale = pant.scale
-                pantEntity.position = simd_make_float3(bodyAnchor.transform.columns.3)
-                
-                self.addChild(pantEntity)
-                self.pantEntity = pantEntity
-                
-            } catch {
-                print("load pant error \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    // TODO: load pants kenapa harus ad faceanchor?
-    private func loadPant(
-        pant: Wearable,
-        with faceAnchor: ARFaceAnchor
-    ) {
-        DispatchQueue.main.async {
-            do {
-                let path = Bundle.main.path(forResource: pant.id, ofType: "usdz")!
-                let url = URL(fileURLWithPath: path)
-                var pantEntity = try Entity.load(contentsOf: url)
+                let pantEntity = try Entity.load(contentsOf: url)
                 
                 pantEntity.scale = pant.scale
                 
-                let rootPosition = faceAnchor.transform.columns.3
-                let positiveY = rootPosition.y < 0 ? -rootPosition.y : rootPosition.y
+                guard anchor is ARFaceAnchor || anchor is ARBodyAnchor else {
+                    print("Anchor is not Face or Body Anchor")
+                    return
+                }
                 
-                pantEntity.position = simd_make_float3(
-                    rootPosition.x,
-                    rootPosition.y - positiveY * 12,
-                    rootPosition.z
-                )
+                if anchor is ARBodyAnchor {
+                    pantEntity.position = simd_make_float3(anchor.transform.columns.3)
+                } else {
+                    let rootPosition = anchor.transform.columns.3
+                    let positiveY = rootPosition.y < 0 ? -rootPosition.y : rootPosition.y
+                    
+                    pantEntity.position = simd_make_float3(
+                        rootPosition.x,
+                        rootPosition.y - positiveY * 12,
+                        rootPosition.z
+                    )
+                }
                 
                 self.addChild(pantEntity)
                 self.pantEntity = pantEntity
