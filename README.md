@@ -35,8 +35,9 @@ Let's Try On Clothes Virtually 🧍
 - StyleOn currenly only availabe at iPadOS 17.2 and up.
 
 
-## Checkout the design
+## Check these out
 - 🎨 Link to Figma file: [Figma](https://www.figma.com/design/qsVP7GUqezY3cBfOAVb3Fw/StyleOn?node-id=0-1&t=v8bh9CQrIV2olWto-1)
+- ✈️ Link to TestFlight: [TestFlight](https://testflight.apple.com/join/gXIq4l74)
 
 
 ## Screenshoots
