@@ -71,6 +71,7 @@ class BodySkeleton: Entity {
         )
     }
     
+    // TODO: double function name sama yg dibawah? kenapa ga digabung?
     func setWearables(
         shirt: Wearable?,
         pant: Wearable?,
@@ -277,6 +278,7 @@ class BodySkeleton: Entity {
         }
     }
     
+    // TODO: load pants kenapa harus ad faceanchor?
     private func loadPant(
         pant: Wearable,
         with faceAnchor: ARFaceAnchor
